@@ -11,25 +11,38 @@
   color: #000;
 }
 
-.profile img {
+.imgProfile {
+  width: 6rem;
   height: 4rem;
-  /* box-shadow: 2px 2px 7px 2px rgba(33, 33, 34, 0.6); */
+  border-radius: 100%;
+}
+
+.imgProfile img {
+  height: inherit;
+  border-radius: 100%;
+  box-shadow: 2px 2px 7px 2px rgba(32, 32, 32, 0.6);
 }
 
 .sidebarIcons {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
-.sidebarIcons svg {
-  font-size: 3rem;
+.sidebarIcons svg{
+  font-size: 2.5rem;
   margin: 0;
   width: 100%;
+  padding: 1rem 0 1rem 0;
+}
+
+hr {
+  margin: 0;
 }
 
 .sidebarIcons svg:hover {
   cursor: pointer;
+  color: #000;
+  background-color: rgb(231, 231, 231, .3);
 }

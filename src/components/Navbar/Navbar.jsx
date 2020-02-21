@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
-import clippers from '../../Images/clippers.png'
+import clippers from '../../Images/trimer-logo-large.svg'
 
 const Navbar = (props) => {
   return ( 
     <nav className={styles.navbar}>
-      <h1>
-        <Link to='/'><span>Razer</span><img src={clippers} alt="clippers"/></Link>
-      </h1>
+      <div>
+        <Link to='/'>
+          <img src={clippers} alt="clippers"/>
+        </Link>
+      </div>
       <ul>
         <li>
           <Link to='/schedule'>Schedule</Link>
