@@ -2,13 +2,13 @@
   display: flex;
   align-items: center;
   height: 5rem;
-  background-color: rgb(0, 66, 92);
+  /* background-color: rgb(0, 66, 92); */
   justify-content: space-between;
 }
 
 .navbar div a {
   text-decoration: none;
-  color: #fff;
+  color: rgb(248, 111, 35);
   margin-top: -3rem;
 }
 
@@ -38,7 +38,7 @@
 
 .navbar a {
   text-decoration: none;
-  color: #fff;
+  color: rgb(248, 111, 35);
 }
 
 .navbar ul li:hover {

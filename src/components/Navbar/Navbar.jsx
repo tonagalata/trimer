@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import styles from './Navbar.module.css'
-import clippers from '../../Images/trimer-logo-large.svg'
+import clippers from '../../Images/trimer-logo-red-large.svg'
 
 const Navbar = (props) => {
   return ( 
@@ -13,13 +13,13 @@ const Navbar = (props) => {
       </div>
       <ul>
         <li>
-          <Link to='/schedule'>Schedule</Link>
+          <Link to='/hair-pros'>Hair Professionals</Link>
         </li>
         <li>
-          <Link to='/barbers'>Barbers</Link>
+          <Link to='/signup'>Sign up</Link>
         </li>
         <li>
-          <Link to='/logout'>Logout</Link>
+          <Link to='/login'>Login</Link>
         </li>
       </ul>
     </nav>
