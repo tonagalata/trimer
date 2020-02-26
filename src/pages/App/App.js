@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
-import Sidebar from '../../components/Sidebar/Sidebar'
+// import Sidebar from '../../components/Sidebar/Sidebar'
 import Footer from '../../components/Footer/Footer'
-import Homepage from '../../components/Homepage/Homepage'
+import HomeHero from '../../components/HomeHero/HomeHero'
 import Schedule from '../../pages/Schedules/Schedules'
 import Barbers from '../../pages/Barbers/Barbers'
-import LoginSignup from '../../pages/LoginSignup/LoginSignup'
+import LoginPage from '../LoginPage/LoginPage'
+import SignupPage from '../SignupPage/SignupPage'
 import './App.css';
 
 class App extends Component {
   render(){
     return (
       <div className="App-layer">
-        <div className='sidebar'>
+        {/* <div className='sidebar'>
           <Sidebar/>
-        </div>
+        </div> */}
       <div className="App-outer-container">
         <Navbar />
         <div className="App-inner-container">
@@ -24,7 +25,7 @@ class App extends Component {
             exact
             path='/'
             render={(props) => 
-            <Homepage/>
+            <HomeHero/>
             }
             />
             <Route 
@@ -43,9 +44,16 @@ class App extends Component {
             />
             <Route 
             exact
-            path='/loginsignup'
+            path='/login'
             render={(props) => 
-            <LoginSignup/>
+            <LoginPage/>
+            }
+            />
+            <Route 
+            exact
+            path='/signup'
+            render={(props) => 
+            <SignupPage/>
             }
             />
           </Switch>
