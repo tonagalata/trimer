@@ -1,0 +1,40 @@
+.scheduleContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 70vh;
+}
+
+.reactCalendar {
+  display: flex;
+  flex-direction: column;
+  width: 40rem;
+  height: 27.78rem;
+}
+
+.reactCalendar button {
+  font-size: 1.25rem;
+}
+
+.reactCalendar abbr {
+  font-size: 1.5rem;
+}
+
+.scheduleContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 1rem;
+  min-width: 35vw;
+}
+
+.scheduleBox {
+  border: 1px solid #000;
+  min-width: 100%;
+  height: 100%;
+}
+
+.scheduleTitles {
+  font-size: 1.75rem;
+  text-align: center;
+  font-weight: 600;
+}
