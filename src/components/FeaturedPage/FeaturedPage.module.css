@@ -1,0 +1,33 @@
+.featured {
+  margin-top: 4rem;
+  height: 75vh;
+  width: 100vw;
+}
+
+.featured hr {
+  height: .55rem;
+  background-color: rgb(255, 205, 113);
+  width: 5vw;
+  justify-content: center;
+  border: none;
+  margin-top: 0;
+}
+
+.featuredTitle {
+  margin-bottom: .75rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.featuredTitle span {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.featuredContainer {
+  /* background-color: rgb(219, 218, 216); */
+  height: inherit;
+  width: inherit;
+}
+
