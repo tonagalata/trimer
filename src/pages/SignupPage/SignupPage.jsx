@@ -1,13 +1,17 @@
 import React from 'react';
+import SignupForm from '../../components/SignupForm/SignupForm'
+import { Link } from 'react-router-dom';
 
-const LoginSignup = (props) => {
+const SignupPage = (props) => {
   return ( 
-    <div>
-      <h1>
-        LoginSignup
-      </h1>
-    </div>
+    <main>
+      <SignupForm 
+      {...props}
+      handleSignupOrLogin={props.handleSignupOrLogin}
+      />
+      <Link to='business-signup'>List Your Business</Link>
+    </main>
    );
 }
  
-export default LoginSignup;
+export default SignupPage;
