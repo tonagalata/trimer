@@ -1,60 +1,125 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
-// import Sidebar from '../../components/Sidebar/Sidebar'
 import Footer from '../../components/Footer/Footer'
-import HomeHero from '../../components/HomeHero/HomeHero'
 import Schedule from '../../pages/Schedules/Schedules'
-import Barbers from '../../pages/Barbers/Barbers'
+import HairProfessionals from '../../pages/HairProfessionals/HairProfessionals'
 import LoginPage from '../LoginPage/LoginPage'
 import SignupPage from '../SignupPage/SignupPage'
+import AdminPage from '../AdminPage/AdminPage'
+import CreateProfessionalForm from '../../components/CreateProfessionalForm/CreateProfessionalForm'
+import Homepage from '../../components/Homepage/Homepage'
+import userService from '../../Services/userService'
+import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import './App.css';
 
 class App extends Component {
+
+      state = {
+        user: userService.getUser()
+      }
+    
+      handleSignupOrLogin = () => {
+        this.setState({ user: userService.getUser() })
+      }
+    
+      handleLogout = () => {
+        // we need to call userService.logout()
+        userService.logout();
+        // we need to set the user property on state to null
+        this.setState({ user: null })
+      }
+
+
+
   render(){
+
     return (
       <div className="App-layer">
-        {/* <div className='sidebar'>
-          <Sidebar/>
-        </div> */}
       <div className="App-outer-container">
-        <Navbar />
+        <Navbar 
+        handleLogout={this.handleLogout}
+        />
         <div className="App-inner-container">
           <Switch>
             <Route 
             exact
             path='/'
             render={(props) => 
-            <HomeHero/>
+            <Homepage
+            {...props}
+            />
             }
             />
             <Route 
             exact
             path='/schedule'
             render={(props) => 
-            <Schedule/>
+            <Schedule
+            {...props}
+            />
             }
             />
             <Route 
             exact
-            path='/barbers'
+            path='/hairprofessionals'
             render={(props) => 
-            <Barbers/>
+            <HairProfessionals
+            user={this.state.user}
+            {...props}
+            />
             }
+            />
+            <Route
+            exact
+            path='/create-hairprofessional'
+            render={(props) => 
+            <CreateProfessionalForm
+            {...props}
+            />
+            }
+            />
+            <Route
+              exact 
+              path="/hairprofessionals/:id/review"
+              render={props => 
+                userService.getUser()
+                ? <ReviewForm 
+                {...props}
+                user={this.state.user}
+                />
+                : <Redirect to='/login'/>
+              }
             />
             <Route 
             exact
             path='/login'
             render={(props) => 
-            <LoginPage/>
+            <LoginPage
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            {...props}
+            />
             }
             />
             <Route 
             exact
             path='/signup'
             render={(props) => 
-            <SignupPage/>
-            }
+            <SignupPage
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            {...props}
+            />
+          }
+            />
+            <Route 
+            exact
+            path='/business-signup'
+            render={(props) => 
+            <AdminPage
+            handleSignupOrLogin={this.handleSignupOrLogin}
+            {...props}
+            />
+          }
             />
           </Switch>
         </div>
