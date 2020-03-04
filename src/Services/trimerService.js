@@ -1,11 +1,15 @@
 const BASE_URL = "/api/";
 
 function index() {
-  return fetch(BASE_URL + 'hairprofessionals').then(res => res.json());
+  return fetch(BASE_URL + 'salon').then(res => res.json());
+}
+
+function getFeatured() {
+  return fetch(BASE_URL + 'featured').then(res => res.json());
 }
 
 function create(restaurant){
-  return fetch(BASE_URL + "create-hairprofessional", {
+  return fetch(BASE_URL + "create-salon", {
     method: "POST",
     headers: new Headers({ "Content-type": "Application/json" }),
     body: JSON.stringify(restaurant)
@@ -14,13 +18,13 @@ function create(restaurant){
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("Hair Professional Already Exists");
+        throw new Error("Salon Already Exists");
       }
     })
 }
 
 function createReview(review, idx){
-  return fetch(BASE_URL + `hairprofessionals/${idx}/review`, {
+  return fetch(BASE_URL + `salon/${idx}/review`, {
     method: "POST",
     headers: new Headers({ "Content-type": "Application/json" }),
     body: JSON.stringify(review)
@@ -29,13 +33,13 @@ function createReview(review, idx){
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("Hair Professional Already Exists");
+        throw new Error("Salon Already Exists");
       }
     })
 }
 
 function deleteReview(restaurant, idx){
-  return fetch(BASE_URL + `hairprofessionals/${idx}`, {
+  return fetch(BASE_URL + `salon/${idx}`, {
     method: "POST",
     headers: new Headers({ "Content-type": "Application/json" }),
     body: JSON.stringify(restaurant)
@@ -44,7 +48,7 @@ function deleteReview(restaurant, idx){
       if (res.ok) {
         return res.json();
       } else {
-        throw new Error("Hair Professional Already Exists");
+        throw new Error("Salon Already Exists");
       }
     })
 }
@@ -53,5 +57,6 @@ export default {
   index,
   create,
   createReview,
-  deleteReview
+  deleteReview,
+  getFeatured
 }

@@ -8,33 +8,48 @@ reviewSchema = new Schema({
   },
   content: {
     type: String
+  },
+  addedBy: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
   }
 }, {
   timestamps: true
 })
 
-hairprofessionalSchema = new Schema({
+scheduleSchema = new Schema({
+  scheduledDate: {
+    type: Date,
+  },
+  scheduledBy: {
+    type: Schema.Types.ObjectId, 
+    ref: 'User'
+  }
+
+}, {
+  timestamps: true
+})
+
+salonSchema = new Schema({
   businessName: {
     type: String,
     required: true
   },
   businessType: {
-    type: String,
-    enum: ['Barbershop', 'Salon', 'Spa'],
-    unique: true
+    type: String
   },
   address: {
     type: String,
-    unique: true,
     required: true
   },
   addedBy: {
     type: Schema.Types.ObjectId, 
     ref: 'User'
   },
-  reviews: [reviewSchema]
+  reviews: [reviewSchema],
+  schedule: [scheduleSchema]
 }, {
   timestamps: true
 })
 
-module.exports = mongoose.model('HairProfessional', hairprofessionalSchema)
+module.exports = mongoose.model('Salon', salonSchema)

@@ -26,10 +26,29 @@
   padding: .2rem;
   display: flex;
   flex-direction: column;
-
 }
 
 .reviewsContent {
-  border: 1px solid #000;
   padding: .5rem;
+}
+
+.salonImage {
+  width: 20rem;
+  height: 10rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.reviewsComments {
+  border: .1rem solid #000;
+  border: outset;
+  padding-bottom: 2rem;
+  height: 10rem;
+  overflow: scroll;
+}
+
+.salonImage img {
+  width: inherit;
+  height: inherit;
+  border-radius: inherit;
 }

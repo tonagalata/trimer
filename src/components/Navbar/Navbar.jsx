@@ -10,8 +10,8 @@ const Navbar = (props) => {
   <>
     <li>
       <Link 
-      to='/hairprofessionals'
-      >Hair Professionals</Link>
+      to='/salon'
+      >Salons</Link>
     </li>
 
     <li>

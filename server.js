@@ -19,8 +19,9 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 //Routes - serving up files
 app.use('/api/users', require('./routes/api/users'))
-app.use('/api', require('./routes/api/hairprofessionals'))
-app.use('/api/hairprofessionals', require('./routes/api/reviews'))
+app.use('/api', require('./routes/api/salon'))
+app.use('/api/salon', require('./routes/api/reviews'))
+app.use('/api/salon', require('./routes/api/schedule'))
 
 app.get('*/', (req, res) =>{
   res.sendFile(path.join(__dirname, 'build', 'index.html'))

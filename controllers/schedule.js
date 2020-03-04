@@ -3,16 +3,15 @@ const Salon = require('../models/salon')
 module.exports = {
   index,
   create,
-  deleteOneReview
+  removeAppointment
 }
 
 async function index(req, res) {
   try {
-    const salon = await Salon.findById(req.params.id)
-    const reviews = await salon.reviews
-    // reviews.splice(reviews, 1)
-    console.log(reviews)
-    res.json(reviews);
+    const salon = await Salon.findById(req.params.id);
+    const schedule = await salon.schedule
+    // schedule.splice(schedule, 1)
+    res.json(schedule);
   } catch (error) {
     res.status(400).json(error)
   }
@@ -20,8 +19,9 @@ async function index(req, res) {
 
 async function create(req, res) {
   try {
-    const salon = await Salon.findById(req.params.id);
-    salon.reviews.push(req.body)
+    const salon = await Salon.findById(req.params.id)
+    .populate('scheduledBy')
+    salon.schedule.push(req.body);
     salon.save({})
     res.json(salon);
   } catch (error) {
@@ -29,13 +29,13 @@ async function create(req, res) {
   }
 }
 
-async function deleteOneReview(req, res) {
+async function removeAppointment(req, res) {
   try {
     const salon = await Salon.findById(req.params.id);
-    const reviews = await salon.reviews
-    reviews.splice(reviews._id, 1)
+    const schedule = await salon.schedule
+    schedule.splice(schedule._id, 1)
     salon.save({})
-    res.json(reviews);
+    res.json(schedule);
   } catch (error) {
     console.log(error)
      res.status(400).json(error);

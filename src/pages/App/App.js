@@ -3,11 +3,11 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import Schedule from '../../pages/Schedules/Schedules'
-import HairProfessionals from '../../pages/HairProfessionals/HairProfessionals'
+import Salons from '../../pages/Salons/Salons'
 import LoginPage from '../LoginPage/LoginPage'
 import SignupPage from '../SignupPage/SignupPage'
 import AdminPage from '../AdminPage/AdminPage'
-import CreateProfessionalForm from '../../components/CreateProfessionalForm/CreateProfessionalForm'
+import CreateSalonForm from '../../components/CreateSalonForm/CreateSalonForm'
 import Homepage from '../../components/Homepage/Homepage'
 import userService from '../../Services/userService'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
@@ -47,6 +47,7 @@ class App extends Component {
             path='/'
             render={(props) => 
             <Homepage
+            user={this.state.user}
             {...props}
             />
             }
@@ -62,9 +63,9 @@ class App extends Component {
             />
             <Route 
             exact
-            path='/hairprofessionals'
+            path='/salon'
             render={(props) => 
-            <HairProfessionals
+            <Salons
             user={this.state.user}
             {...props}
             />
@@ -72,16 +73,16 @@ class App extends Component {
             />
             <Route
             exact
-            path='/create-hairprofessional'
+            path='/create-salon'
             render={(props) => 
-            <CreateProfessionalForm
+            <CreateSalonForm
             {...props}
             />
             }
             />
             <Route
               exact 
-              path="/hairprofessionals/:id/review"
+              path="/salon/:id/review"
               render={props => 
                 userService.getUser()
                 ? <ReviewForm 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import styles from './CreateProfessionalForm.module.css'
+import styles from './CreateSalonForm.module.css'
 import trimerService from '../../Services/trimerService'
 
-class CreateProfessionalForm extends Component {
+class CreateSalonForm extends Component {
 
   state = this.getInitialState();
 
@@ -23,7 +23,7 @@ class CreateProfessionalForm extends Component {
       this.state.address
     );
   }
-
+  
   handleChange = e => {
     this.setState({
       error: '',
@@ -38,7 +38,7 @@ class CreateProfessionalForm extends Component {
       const { businessName, businessType, address, addedBy } = this.state
       await trimerService.create({ businessName, businessType, address, addedBy });
       this.setState(this.getInitialState(), () => {
-        this.props.history.push('/hairprofessionals');
+        this.props.history.push('/salon');
       });
     } catch (err) {
       this.setState({
@@ -61,7 +61,7 @@ class CreateProfessionalForm extends Component {
 
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <fieldset>
-            <legend>Create Restaurant Form</legend>
+            <legend>Create Salon Form</legend>
             <label htmlFor='businessName'>
               Business Name
             </label>
@@ -71,7 +71,6 @@ class CreateProfessionalForm extends Component {
               type='text' 
               value={this.state.businessName}
               onChange={this.handleChange}
-            
             />
             <label 
             htmlFor='businessType'>
@@ -115,4 +114,4 @@ class CreateProfessionalForm extends Component {
   }
 }
 
-export default CreateProfessionalForm;
+export default CreateSalonForm;

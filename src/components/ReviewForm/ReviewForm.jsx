@@ -9,7 +9,8 @@ class ReviewForm extends Component {
   getInitialState(){
     return {
      rating: '',
-     content: ''
+     content: '',
+     addedBy: this.props.user,
     }
   }
 
@@ -21,7 +22,7 @@ class ReviewForm extends Component {
   }
 
   handleChange = e => {
-    console.log(e.target.name)
+    // console.log(e.target.name)
    this.setState({
     [e.target.name]: e.target.value
    })
@@ -31,11 +32,11 @@ class ReviewForm extends Component {
     e.preventDefault();
     if(!this.isFormValid()) return;
     try {
-      const { rating, content } = this.state;
-      await trimerService.createReview({ rating, content }, this.props.match.params.id)
+      const { rating, content, addedBy } = this.state;
+      await trimerService.createReview({ rating, content, addedBy }, this.props.match.params.id)
       this.setState(this.getInitialState(), () => {
         // add the token to state
-        this.props.history.push('/hairprofessionals')
+        this.props.history.push('/salon')
 
       })
     } catch (error) {
@@ -43,6 +44,7 @@ class ReviewForm extends Component {
       this.setState({
         rating: 5,
         content: '',
+        addedBy: this.props.user._id,
         error: error.message
       })
     }
@@ -76,7 +78,16 @@ class ReviewForm extends Component {
             value={this.state.content}
             onChange={this.handleChange}
             />
+            <input 
+              id='addedBy' 
+              name='addedBy' 
+              type='text'
+              hidden
+              value={this.state.addedBy._id}
+            />
+            {console.log(this.props.user)}
             <button 
+            className='btn btn-success'
             type='submit' disabled={!this.isFormValid()}
             >Submit</button>
           </form>

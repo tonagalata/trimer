@@ -37,7 +37,7 @@ class LoginForm extends Component {
       this.setState(this.getInitialState(), () => {
         // add the token to state
         this.props.handleSignupOrLogin()
-        this.props.history.push('/hairprofessionals')
+        this.props.history.push('/')
 
       })
     } catch (error) {
