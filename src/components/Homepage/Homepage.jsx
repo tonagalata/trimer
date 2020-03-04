@@ -18,8 +18,6 @@ class Homepage extends Component {
     }
   }
 
-  co
-
   componentDidMount = async () => {
    try {
      const data = await trimerService.getFeatured()
@@ -39,6 +37,10 @@ class Homepage extends Component {
         <h1 style={{textAlign:'center'}}>
           Featured Salons
         </h1>
+        {/* <div className='chip'>
+          Tag
+          <i class="close material-icons">close</i>
+        </div> */}
         <div>
         <div className={styles.stylestsContainer}>
       { this.state.featuredSalons.map((d, idx) => 
@@ -46,25 +48,36 @@ class Homepage extends Component {
               <h2 key={d.businessName}>{d.businessName}</h2>
               <div key={idx} className={styles.salonImage}>
                 { d.businessType === "Barbershop" ?
-                  <img src={barbershop} alt='barbershop'/>  : ''
+                <Link to={`salon/${d._id}`}>
+                  <img src={barbershop} alt='barbershop'/>
+                </Link>  
+                  : ''
                 }
                 { d.businessType === "Spa" ?
-                  <img src={spa} alt='Spa'/>  : ''
+                <Link to={`salon/${d._id}`}>
+                  <img src={spa} alt='Spa'/>  
+                </Link>
+                  : ''
                 }
                 { d.businessType === "Salon" ?
-                  <img src={salon} alt='Salon'/>  : ''
+                 <Link to={`salon/${d._id}`}>
+                  <img src={salon} alt='Salon'/>  
+                 </Link>
+                  : ''
                 }
               </div>
-              <div key={d.businessType}>{d.businessType}</div>
+              <div className='chip' key={d.businessType}>{d.businessType}</div>
               <div key={d.address}>{d.address}</div>
               {/* <div key={idx}>{d.addedBy && Object.values(d.addedBy)}</div>
               {console.log(d.addedBy)}           */}
               <Link to={`salon/${d._id}/review`}><button className='btn btn-primary'>Add review</button></Link>
               <div className={styles.reviewsContainer}>
   
-                  {d.reviews.map( r => 
+                  {
+                  d.reviews.map( r => 
 
                   <StarRatings
+                  key={r.rating}
                   starDimension="1rem"
                   starSpacing=".01rem"
                   starRatedColor={r.rating > 3 ? 'green' : 'red'}

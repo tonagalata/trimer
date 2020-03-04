@@ -4,24 +4,45 @@ import Navbar from '../../components/Navbar/Navbar'
 import Footer from '../../components/Footer/Footer'
 import Schedule from '../../pages/Schedules/Schedules'
 import Salons from '../../pages/Salons/Salons'
+import ViewSalon from '../../pages/ViewSalon/ViewSalon'
 import LoginPage from '../LoginPage/LoginPage'
 import SignupPage from '../SignupPage/SignupPage'
 import AdminPage from '../AdminPage/AdminPage'
 import CreateSalonForm from '../../components/CreateSalonForm/CreateSalonForm'
 import Homepage from '../../components/Homepage/Homepage'
 import userService from '../../Services/userService'
+import trimerService from '../../Services/trimerService'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
 import './App.css';
 
 class App extends Component {
 
       state = {
-        user: userService.getUser()
+        user: userService.getUser(),
+        salon: this.getInitialState()
       }
     
       handleSignupOrLogin = () => {
         this.setState({ user: userService.getUser() })
       }
+
+      getInitialState(){
+        return {
+         salon: []
+        }
+      }
+
+      componentDidMount = async () => {
+        try {
+          const data = await trimerService.index()
+           console.log(data)
+            this.setState({
+             salon: data
+           })
+        } catch (error) {
+          console.log(error)
+        }
+       }
     
       handleLogout = () => {
         // we need to call userService.logout()
@@ -50,6 +71,16 @@ class App extends Component {
             user={this.state.user}
             {...props}
             />
+            }
+            />
+            <Route
+            exact
+            path='/salon/:id'
+            render={(props) => 
+              <ViewSalon
+              {...props}
+              salon={this.state.salon}
+              />
             }
             />
             <Route 

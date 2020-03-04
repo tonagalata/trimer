@@ -41,13 +41,22 @@ class Salons extends Component {
               <h2 key={d.businessName}>{d.businessName}</h2>
               <div key={idx} className={styles.salonImage}>
                 { d.businessType === "Barbershop" ?
-                  <img src={barbershop} alt='barbershop'/>  : ''
+                <Link to={`salon/${d._id}`}>
+                  <img src={barbershop} alt='barbershop'/>  
+                </Link>
+                  : ''
                 }
                 { d.businessType === "Spa" ?
-                  <img src={spa} alt='Spa'/>  : ''
+                  <Link to={`salon/${d._id}`}>
+                    <img src={spa} alt='Spa'/>  
+                  </Link>
+                  : ''
                 }
                 { d.businessType === "Salon" ?
-                  <img src={salon} alt='Salon'/>  : ''
+                <Link to={`salon/${d._id}`}>
+                  <img src={salon} alt='Salon'/>  
+                </Link>
+                  : ''
                 }
               </div>
               <div key={d.businessType}>{d.businessType}</div>

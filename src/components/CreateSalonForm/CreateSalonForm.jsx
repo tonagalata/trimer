@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './CreateSalonForm.module.css'
 import trimerService from '../../Services/trimerService'
+// import SearchBar from '../AutoComplete/AutoComplete';
 
 class CreateSalonForm extends Component {
 
@@ -13,7 +14,7 @@ class CreateSalonForm extends Component {
       address: '',
       addedBy: this.props.user,
       reviews: [],
-      error: ''
+      error: '',
     }
   } 
 
@@ -27,7 +28,8 @@ class CreateSalonForm extends Component {
   handleChange = e => {
     this.setState({
       error: '',
-      ...{[e.target.name]: e.target.value}
+      ...{[e.target.name]: e.target.value},
+      // ...{address: this.setAutoComplete()}
     })
   }
 
@@ -51,7 +53,6 @@ class CreateSalonForm extends Component {
     }
   }
 
-
   render() {
     return (
       <section className={styles.section}>
@@ -71,31 +72,34 @@ class CreateSalonForm extends Component {
               type='text' 
               value={this.state.businessName}
               onChange={this.handleChange}
+              placeholder='Enter Your Businesses Name'
             />
             <label 
             htmlFor='businessType'>
               Business Type
             </label>
-            <select 
-            id='businessType' 
-            name='businessType'
-            value={this.state.businessType} 
-            onChange={this.handleChange}>
-              <option value='' disabled>Select Business Type</option>
-              <option value='Barbershop'>Barbershop</option>
-              <option value='Salon'>Salon</option>
-              <option value='Spa'>Spa</option>
-            </select>
+              <select
+              className='browser-default' 
+              id='businessType' 
+              name='businessType'
+              value={this.state.businessType} 
+              onChange={this.handleChange}>
+                <option value='' disabled>Select Business Type</option>
+                <option value='Barbershop'>Barbershop</option>
+                <option value='Salon'>Salon</option>
+                <option value='Spa'>Spa</option>
+              </select>
             <label htmlFor='address'>
             Address
             </label>
             <input 
               id='address' 
               name='address' 
-              type='text' 
               value={this.state.address}
               onChange={this.handleChange} 
-            />
+              placeholder="Enter your address"
+              type="text" 
+              />
             <input 
               id='addedBy' 
               name='addedBy' 

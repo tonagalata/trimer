@@ -51,8 +51,8 @@
   overflow: scroll;
 }
 
-.salonImage img {
-  width: inherit;
-  height: inherit;
-  border-radius: inherit;
+.salonImage a img {
+  width: 20rem;
+  height: 10rem;
+  border-radius: 5px;
 }
