@@ -1,3 +1,7 @@
+.main{
+  text-align: center;
+}
+
 .prosContainer {
   display: flex;
 }
@@ -33,21 +37,32 @@
 }
 
 .salonImage {
-  width: 20rem;
-  height: 10rem;
+  margin: 0 auto;
+  width: 40%;
+  height: 15rem;
   border: 1px solid #000;
-  border-radius: 5px;
 }
 
 .reviewsComments {
-  border: .1rem solid #000;
+  display: flex;
+  /* border: .1rem solid #000; */
   padding-bottom: 2rem;
-  height: 10rem;
-  overflow: scroll;
 }
 
-.salonImage a img {
-  width: 20rem;
-  height: 10rem;
-  border-radius: 5px;
+.salonImage img {
+  width: 100%;
+  height: 15rem;
+}
+
+.businessComponent button {
+  width: 26rem;
+  margin-top: 1rem;
+}
+
+.businessComponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 1rem;
 }
