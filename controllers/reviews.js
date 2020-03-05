@@ -11,7 +11,7 @@ async function index(req, res) {
     const salon = await Salon.findById(req.params.id)
     const reviews = await salon.reviews
     // reviews.splice(reviews, 1)
-    console.log(reviews)
+    // console.log(reviews)
     res.json(reviews);
   } catch (error) {
     res.status(400).json(error)
@@ -23,7 +23,7 @@ async function create(req, res) {
     const salon = await Salon.findById(req.params.id);
     salon.reviews.push(req.body)
     salon.save({})
-    res.json(salon);
+    res.json({});
   } catch (error) {
     res.status(400).json(error);
   }
