@@ -12,7 +12,8 @@ class Schedules extends Component {
   handleTime = (e) => {
     try {
       let trueTime = e/3600;
-      let time = trueTime //<= 12 ? trueTime : trueTime - 12  
+      let time = trueTime 
+      //<= 12 ? trueTime : trueTime - 12  
       this.setState({
         time: time 
       })
@@ -52,6 +53,7 @@ class Schedules extends Component {
               onChange={this.onScheduleChange}
               value={this.state.date}
               />
+              {console.log(this.props)}
           </div>
           <div className={styles.scheduleContent}>
             <div className={styles.scheduleTitles}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styles from './CreateSalonForm.module.css'
 import trimerService from '../../Services/trimerService'
+import { Checkbox } from 'react-bootstrap';
 // import SearchBar from '../AutoComplete/AutoComplete';
 
 class CreateSalonForm extends Component {
@@ -55,7 +56,8 @@ class CreateSalonForm extends Component {
 
   render() {
     return (
-      <section className={styles.section}>
+      <section className={styles.sections}>
+        <div className={styles.signPosition}>
         {
           this.state.error && <p>{this.state.error}</p>
         }
@@ -78,6 +80,11 @@ class CreateSalonForm extends Component {
             htmlFor='businessType'>
               Business Type
             </label>
+            <input
+            type='checkbox'
+            value={this.state.businessType}
+            onChange={this.handleChange}
+            />
               <select
               className='browser-default' 
               id='businessType' 
@@ -113,6 +120,7 @@ class CreateSalonForm extends Component {
             >Submit</button>
           </fieldset>
         </form>
+        </div>
       </section>
     )
   }

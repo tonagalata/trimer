@@ -5,6 +5,7 @@ import StarRatings from 'react-star-ratings'
 import barbershop from '../../Images/barbershop.png'
 import spa from '../../Images/spa.jpg'
 import salon from '../../Images/salon.jpg'
+import trimerVideo from '../../assets/trimer-video.mp4'
 import styles from './Homepage.module.css'
 
 class Homepage extends Component {
@@ -14,7 +15,7 @@ class Homepage extends Component {
   getInitialState(){
     return {
      featuredSalons: [],
-     featuresNum: Math.floor(Math.random() * (4 - 0) + 0)
+     featuresNum: Math.floor(Math.random() * (4 - 0) + 0),
     }
   }
 
@@ -23,16 +24,21 @@ class Homepage extends Component {
      const data = await trimerService.getFeatured()
       console.log(data)
        this.setState({
-        featuredSalons: data
+        featuredSalons: data,
       })
+      console.log(this.state.totalRating)
     } catch (error) {
       console.log(error)
     }
   }
+  
 
   render() { 
     return ( 
     <div className='container'>
+      <div className={styles.videoScreen}>
+      </div>
+      <video src={trimerVideo} autoPlay/>
       <div className={styles.mainContent}>
         <h1 style={{textAlign:'center'}}>
           Featured Salons
@@ -71,19 +77,18 @@ class Homepage extends Component {
               {/* <div key={idx}>{d.addedBy && Object.values(d.addedBy)}</div>
               {console.log(d.addedBy)}           */}
               <Link to={`salon/${d._id}/review`}><button className='btn btn-primary'>Add review</button></Link>
-              <div className={styles.reviewsContainer}>
+              <div key={d._id} className={styles.reviewsContainer}>
   
                   {
-                  d.reviews.map( r => 
-
+                  d.reviews.map( ({ rating }) => 
                   <StarRatings
-                  key={r.rating}
+                  key={rating}
                   starDimension="1rem"
                   starSpacing=".01rem"
-                  starRatedColor={r.rating > 3 ? 'green' : 'red'}
-                  rating={r.rating} />
+                  starRatedColor={rating > 3 ? 'green' : 'red'}
+                  rating={rating} 
+                  />
                   )}
-
                   </div>
                 </div>
                 )}

@@ -35,7 +35,7 @@ class App extends Component {
       componentDidMount = async () => {
         try {
           const data = await trimerService.index()
-           console.log(data)
+          //  console.log(data)
             this.setState({
              salon: data
            })
@@ -79,7 +79,6 @@ class App extends Component {
             render={(props) => 
               <ViewSalon
               {...props}
-              salon={this.state.salon}
               />
             }
             />

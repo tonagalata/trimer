@@ -10,7 +10,7 @@ class ReviewForm extends Component {
     return {
      rating: '',
      content: '',
-     addedBy: this.props.user,
+     addedBy: this.props.user._id,
     }
   }
 
@@ -36,7 +36,7 @@ class ReviewForm extends Component {
       await trimerService.createReview({ rating, content, addedBy }, this.props.match.params.id)
       this.setState(this.getInitialState(), () => {
         // add the token to state
-        this.props.history.push('/salon')
+        this.props.history.goBack()
 
       })
     } catch (error) {
@@ -61,8 +61,14 @@ class ReviewForm extends Component {
       >
           <form 
           onSubmit={this.handleSubmit}>
+            {console.log(this.props)}
             <label htmlFor='rating'>Rating</label>
-            <select id='rating' name='rating' value={this.state.rating} onChange={this.handleChange}>
+            <select
+            className='browser-default' 
+            id='rating' 
+            name='rating' 
+            value={this.state.rating} 
+            onChange={this.handleChange}>
               <option value='' disabled>Select Rating...</option>
               <option value='1'>1</option>
               <option value='2'>2</option>
@@ -85,7 +91,6 @@ class ReviewForm extends Component {
               hidden
               value={this.state.addedBy._id}
             />
-            {console.log(this.props.user)}
             <button 
             className='btn btn-success'
             type='submit' disabled={!this.isFormValid()}

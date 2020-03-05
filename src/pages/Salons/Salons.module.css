@@ -1,3 +1,8 @@
+.main {
+  justify-content: center;
+  text-align: center;
+}
+
 .prosContainer {
   display: flex;
 }
@@ -40,7 +45,7 @@
 }
 
 .reviewsComments {
-  border: .1rem solid #000;
+  /* border: .1rem solid #000; */
   padding-bottom: 2rem;
   height: 10rem;
   overflow: scroll;

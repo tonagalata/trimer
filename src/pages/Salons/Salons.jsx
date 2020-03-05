@@ -59,7 +59,7 @@ class Salons extends Component {
                   : ''
                 }
               </div>
-              <div key={d.businessType}>{d.businessType}</div>
+              <div className='chip' key={d.businessType}>{d.businessType}</div>
               <div key={d.address}>{d.address}</div>
               {/* <div key={idx}>{d.addedBy && Object.values(d.addedBy)}</div>
               {console.log(d.addedBy)}           */}
@@ -112,6 +112,7 @@ class Salons extends Component {
           </div>
         </div>
         {
+          this.props.user &&
           this.props.user.isAdmin &&          
           <Link to='/create-salon'>List Your Shop</Link>
         }
