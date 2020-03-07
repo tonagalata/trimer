@@ -19,7 +19,7 @@ async function getFeatured(req, res) {
   try {
     const salon = await Salon.find({})
     .populate('addedBy')
-    .sort({ '-createdAt': 1 })
+    .sort({ 'createdAt': -1 })
     .limit(3)
     res.json(salon);
     Salon.find({})
