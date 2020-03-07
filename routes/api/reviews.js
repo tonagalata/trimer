@@ -7,10 +7,11 @@ router.get('/:id/review', reviewsCtlr.index)
 
 router.use(require('../../config/auth'))
 
+router.delete('/:id/review/:idx', isAuthenticated, reviewsCtlr.deleteOneReview)
+router.put('/:id/review/:idx',  reviewsCtlr.UpdateOneReview)
 router.post('/:id/review', isAuthenticated, reviewsCtlr.create)
-router.delete('/review/:id/', isAuthenticated, reviewsCtlr.deleteOneReview)
 
-
+//isAuthenticated,
 /* Helper Function */
 
 function isAuthenticated(req, res, next) {
