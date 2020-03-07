@@ -115,6 +115,7 @@ class ViewSalon extends Component {
                     { console.log(r.addedBy + ' addedBy') }
                     { console.log(this.props.user._id + ' user') }
                     {
+                      this.props.user !== null &&
                       r.addedBy === this.props.user._id
                       ?
                       <button style={{ marginTop: '1rem' }} onClick={this.props.handleDelete.bind(this, idx, this.props.match.params.id)} className='btn btn-danger right'>
