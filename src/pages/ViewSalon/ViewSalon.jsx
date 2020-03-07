@@ -16,7 +16,7 @@ class ViewSalon extends Component {
   getInitialState(){
     return {
      salon: [],
-     stylist: []
+    //  stylist: []
     }
   }
 
@@ -35,10 +35,10 @@ class ViewSalon extends Component {
    componentDidCatch = async () => {
     try {
       const data = await trimerService.index()
-      const data2 = await trimerService.getStylist(this.props.match.params.id)
+      // const data2 = await trimerService.getStylist(this.props.match.params.id)
         this.setState({
          salon: data,
-         stylist: data2
+        //  stylist: data2
        })
     } catch (error) {
       console.log(error)
@@ -137,7 +137,7 @@ class ViewSalon extends Component {
                     Avalible Professionals
                   </h1>
                   <div>
-                    {console.log(this.state.stylist)}
+                    {/* {console.log(this.state.stylist)} */}
                   </div>
                 </div>
               </>

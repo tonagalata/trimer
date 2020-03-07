@@ -15,9 +15,9 @@ function getFeatured() {
   return fetch(BASE_URL + 'featured').then(res => res.json());
 }
 
-function getStylist(idx) {
-  return fetch(BASE_URL + `salon/${idx}/stylist`).then(res => res.json());
-}
+// function getStylist(idx) {
+//   return fetch(BASE_URL + `salon/${idx}/stylist`).then(res => res.json());
+// }
 
 function create(salon){
   return fetch(BASE_URL + "create-salon", {
@@ -72,5 +72,5 @@ export default {
   createReview,
   deleteReview,
   getFeatured,
-  getStylist
+  // getStylist
 }

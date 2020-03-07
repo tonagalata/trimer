@@ -5,17 +5,16 @@ const Stylist = require('../models/stylist')
 module.exports = {
   index,
   create,
-  // getFeatured
 }
 
-// async function index(req, res) {
-//   const salon = await Salon.find(req.params.id)
-//   const stylist = await salon.stylist.find({})
-//   .populate('homeSalon')
-//   .sort({ 'createdAt': -1 })
-//   res.json(stylist);
-//   // Stylist.find({})
-// }
+async function index(req, res) {
+  const salon = await Salon.find(req.params.id)
+  const stylist = await salon.stylist.find({})
+  .populate('homeSalon')
+  .sort({ 'createdAt': -1 })
+  res.json(stylist);
+  // Stylist.find({})
+}
 
 async function create(req, res){
   try{
