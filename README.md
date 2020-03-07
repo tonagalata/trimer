@@ -13,16 +13,16 @@ Once logged in you can browse through our list of partners, add a review and rem
 
 ## Screenshots
 
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot1.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot2.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot3.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot4.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot5.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot6.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot7.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot8.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot9.png)
-![alt text](https://github.com/tonagalata/trimer/blob/development/public/images/screenshots/screenshot10.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot1.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot2.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot3.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot4.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot5.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot6.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot7.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot8.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot9.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot10.png)
 
 
 ## Deployment
