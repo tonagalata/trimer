@@ -17,19 +17,6 @@ reviewSchema = new Schema({
   timestamps: true
 })
 
-scheduleSchema = new Schema({
-  scheduledDate: {
-    type: Date,
-  },
-  scheduledBy: {
-    type: Schema.Types.ObjectId, 
-    ref: 'User'
-  }
-
-}, {
-  timestamps: true
-})
-
 salonSchema = new Schema({
   businessName: {
     type: String,
@@ -46,8 +33,12 @@ salonSchema = new Schema({
     type: Schema.Types.ObjectId, 
     ref: 'User'
   },
+  stylist: {
+    type: Schema.Types.ObjectId, 
+    ref: 'Stylist'
+  },
   reviews: [reviewSchema],
-  schedule: [scheduleSchema]
+  businessHours: String
 }, {
   timestamps: true
 })
