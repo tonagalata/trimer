@@ -1,10 +1,11 @@
 .scheduleContainer {
   display: flex;
-  justify-content: space-between;
-  height: 70vh;
+  justify-content: space-around;
+  /* flex-direction: column; */
+  /* height: 70vh; */
 }
 
-.reactCalendar {
+/* .reactCalendar {
   display: flex;
   flex-direction: column;
   width: 40rem;
@@ -17,24 +18,30 @@
 
 .reactCalendar abbr {
   font-size: 1.5rem;
-}
+} */
 
 .scheduleContent {
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin-right: 1rem;
-  min-width: 35vw;
+  /* min-width: 35vw; */
 }
 
 .scheduleBox {
-  border: 1px solid #000;
-  min-width: 100%;
-  height: 100%;
+  /* border: 1px solid #000; */
+  width: inherit;
+  /* height: 100%; */
 }
 
 .scheduleTitles {
   font-size: 1.75rem;
   text-align: center;
   font-weight: 600;
+}
+
+@media only screen and (max-width: 1000px) {
+  .scheduleContainer {
+    flex-direction: column;
+  }
 }

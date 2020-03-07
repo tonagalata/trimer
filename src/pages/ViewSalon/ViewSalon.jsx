@@ -81,7 +81,9 @@ class ViewSalon extends Component {
                 <div className={styles.businessComponent}>
                   <div className='chip' key={d.businessType}>{d.businessType}</div>
                   <div key={d.address}>{d.address}</div>
+                 { this.props.user !== null &&
                   <Link to={`/salon/${d._id}/review`}><button className='btn btn-primary'>Add review</button></Link>
+                  }
                 </div>
                 <div className={styles.reviewsContainer}>
                 { 
@@ -112,8 +114,6 @@ class ViewSalon extends Component {
                       starSpacing=".01rem"
                       starRatedColor={r.rating > 3 ? 'green' : 'red'}
                       rating={r.rating} />
-                    { console.log(r.addedBy + ' addedBy') }
-                    { console.log(this.props.user._id + ' user') }
                     {
                       this.props.user !== null &&
                       r.addedBy === this.props.user._id
