@@ -7,6 +7,7 @@ Looking for a Barbershop, Salon or Spa is difficult, even more trying to get the
 Visit [Trimer](https://trimer-app.herokuapp.com/) to get started
 
 To begin create a Free user account, by click sign up. As soon as you sign up, you will be automatically logged in. 
+
 ``Although you don't have to sign up to browse our list of partners, you will have to create an account to schedule a visit``
 
 Once logged in you can browse through our list of partners, add a review and remove that review if you changed your mind. You will also be able to schedule a visit by selecting ``Schedule`` on the Navigation menu.
