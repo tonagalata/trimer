@@ -15,6 +15,10 @@ function getFeatured() {
   return fetch(BASE_URL + 'featured').then(res => res.json());
 }
 
+function getStylist(idx) {
+  return fetch(BASE_URL + `salon/${idx}/stylist`).then(res => res.json());
+}
+
 function create(salon){
   return fetch(BASE_URL + "create-salon", {
     method: "POST",
@@ -51,19 +55,15 @@ function createReview(review, idx){
     })
 }
 
-function deleteReview(salon, idx){
-  return fetch(BASE_URL + `salon/${idx}`, {
-    method: "POST",
-    headers: new Headers({ "Content-type": "Application/json" }),
-    body: JSON.stringify(salon)
+function deleteReview(review, siteIdx){
+  return fetch(BASE_URL + `salon/${siteIdx}/review/${review}/`, {
+    method: "DELETE"
+    // ,
+    // headers: new Headers({ "Content-type": "Application/json" }),
+    // "Authorization": 'Bearer ' + tokenService.getToken(),
+    // body: JSON.stringify(review)
   })
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      } else {
-        throw new Error("Salon Already Exists");
-      }
-    })
+  .then(res => {return  res.json() })
 }
 
 export default {
@@ -71,5 +71,6 @@ export default {
   create,
   createReview,
   deleteReview,
-  getFeatured
+  getFeatured,
+  getStylist
 }
