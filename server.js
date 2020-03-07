@@ -21,7 +21,8 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use('/api/users', require('./routes/api/users'))
 app.use('/api', require('./routes/api/salon'))
 app.use('/api/salon', require('./routes/api/reviews'))
-app.use('/api/salon', require('./routes/api/schedule'))
+app.use('/api/salon', require('./routes/api/stylists'))
+app.use('/api/salon', require('./routes/api/appointment'))
 
 app.get('*/', (req, res) =>{
   res.sendFile(path.join(__dirname, 'build', 'index.html'))
