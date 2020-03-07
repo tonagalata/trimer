@@ -3,11 +3,9 @@ import { Link } from 'react-router-dom'
 import trimerService from '../../Services/trimerService'
 import StarRatings from 'react-star-ratings'
 import barbershop from '../../Images/barbershop.jpg'
-import spa from '../../Images/spa.jpg'
-import salon from '../../Images/salon.jpg'
-import styles from './Salons.module.css'
+import styles from './Barbershop.module.css'
 
-class Salons extends Component {
+class Barbershop extends Component {
   state = this.getInitialState()
 
   getInitialState(){
@@ -28,46 +26,30 @@ class Salons extends Component {
    }
   }
 
-//  handleDeleteReview = (id) => {
-//   //  id.preventDefault()
-//    console.log(id)
-//     // await trimerService.deleteReview()
-//     // this.setState({
-//     //   delReview: delReview
-//     // })
-
-//   }
-
   render() { 
     return ( 
       <section className='container'>
       <h1 className={styles.main}>
       Hair Salons
       </h1>
-      <div className={styles.prosContainer}>
+      <div className={styles.prosContainer} style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
+      {
+        this.state.salons.map((d, idx) => d.businessType === 'Barbershop'
+        ?
         <div className={styles.stylestsContainer}>
-      { this.state.salons.map((d, idx) => 
+      
+      { 
+      
+      // this.state.salons.map((d, idx) => 
           <div key={d._id} className={styles.salonsContainer}>
               <h2 key={d.businessName}>{d.businessName}</h2>
               <div key={idx} className={styles.salonImage}>
-                { d.businessType === "Barbershop" ?
+                {/* { d.businessType === "Barbershop" ? */}
                 <Link to={`salon/${d._id}`}>
                   <img src={barbershop} alt='barbershop'/>  
                 </Link>
-                  : ''
-                }
-                { d.businessType === "Spa" ?
-                  <Link to={`salon/${d._id}`}>
-                    <img src={spa} alt='Spa'/>  
-                  </Link>
-                  : ''
-                }
-                { d.businessType === "Salon" ?
-                <Link to={`salon/${d._id}`}>
-                  <img src={salon} alt='Salon'/>  
-                </Link>
-                  : ''
-                }
+                  {/* : ''
+                } */}
               </div>
               <div className='chip' key={d.businessType}>{d.businessType}</div>
               <div key={d.address}>{d.address}</div>
@@ -91,11 +73,7 @@ class Salons extends Component {
                   key={r._id}
                   className={styles.reviewsContent}
                   > 
-                  <div>
-                    <div style={{ flexWrap: 'wrap' }}>
-                    {r.content}
-                    </div>
-                  </div>
+                  <div>{r.content}</div>
 
                   <StarRatings
                   starDimension="1rem"
@@ -111,8 +89,11 @@ class Salons extends Component {
                   <div>
                   </div>
             </div>
-                )}
+                }
+            
           </div>
+          : ''
+        )}
         </div>
         {
           this.props.user &&
@@ -125,4 +106,4 @@ class Salons extends Component {
   }
 }
  
-export default Salons;
+export default Barbershop;

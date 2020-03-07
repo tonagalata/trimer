@@ -13,6 +13,8 @@ import Homepage from '../../components/Homepage/Homepage'
 import userService from '../../Services/userService'
 import trimerService from '../../Services/trimerService'
 import ReviewForm from '../../components/ReviewForm/ReviewForm'
+import Barbershop from '../Barbershop/Barbershop';
+import SalonAndSpa from '../SalonAndSpa/SalonAndSpa';
 import './App.css';
 
 class App extends Component {
@@ -51,6 +53,11 @@ class App extends Component {
         this.setState({ user: null })
       }
 
+      handleDelete = (review, siteIdx) => {
+        // console.log(review, siteIdx)
+        trimerService.deleteReview(review, siteIdx)
+      }
+
 
 
   render(){
@@ -78,6 +85,8 @@ class App extends Component {
             path='/salon/:id'
             render={(props) => 
               <ViewSalon
+              user={this.state.user}
+              handleDelete={this.handleDelete}
               {...props}
               />
             }
@@ -96,6 +105,27 @@ class App extends Component {
             path='/salon'
             render={(props) => 
             <Salons
+            user={this.state.user}
+            salon={this.state.salon}
+            {...props}
+            />
+            }
+            />
+            <Route 
+            exact
+            path='/barbershop'
+            render={(props) => 
+            <Barbershop
+            user={this.state.user}
+            {...props}
+            />
+            }
+            />
+            <Route 
+            exact
+            path='/salon-spa'
+            render={(props) => 
+            <SalonAndSpa
             user={this.state.user}
             {...props}
             />
@@ -162,3 +192,4 @@ class App extends Component {
 }
 
 export default App;
+

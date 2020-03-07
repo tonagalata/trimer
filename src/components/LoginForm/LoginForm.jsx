@@ -58,11 +58,7 @@ class LoginForm extends Component {
         }
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <fieldset>
-            <legend>Login Form</legend>
-            <label 
-            htmlFor='email'>
-              Email
-            </label>
+            <legend style={{ fontWeight: '500', textAlign: 'center', textTransform: 'uppercase', borderBottom: '1px solid #000' }}>Login</legend>
             <input 
               id='email' 
               name='email' 
@@ -71,8 +67,8 @@ class LoginForm extends Component {
               onChange={this.handleChange} 
             />
             <label 
-            htmlFor='password'>
-              Password
+            htmlFor='email'>
+              Email
             </label>
             <input 
               id='password' 
@@ -81,6 +77,10 @@ class LoginForm extends Component {
               value={this.state.password} 
               onChange={this.handleChange}
             />
+            <label 
+            htmlFor='password'>
+              Password
+            </label>
             <button 
             type='submit'
             disabled={ !this.isFormValid() }

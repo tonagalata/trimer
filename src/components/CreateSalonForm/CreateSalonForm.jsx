@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styles from './CreateSalonForm.module.css'
 import trimerService from '../../Services/trimerService'
-import { Checkbox } from 'react-bootstrap';
 // import SearchBar from '../AutoComplete/AutoComplete';
 
 class CreateSalonForm extends Component {

@@ -1,0 +1,58 @@
+.main {
+  justify-content: center;
+  text-align: center;
+}
+
+.prosContainer {
+  display: flex;
+}
+
+.hairProfessionalsContainer {
+  border: 1px solid #000;
+  margin: 1rem;
+  padding: 1rem;
+  width: 30%;
+}
+
+.stylestsContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.stylestsContainer div {
+  margin: .2rem;
+}
+
+.stylestsContainer h2 {
+  font-size: 1.5rem;
+}
+
+.reviewsContainer {
+  padding: .2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewsContent {
+  padding: .5rem;
+}
+
+.salonImage {
+  width: 20rem;
+  height: 10rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.reviewsComments {
+  /* border: .1rem solid #000; */
+  padding-bottom: 2rem;
+  height: 10rem;
+  overflow: scroll;
+}
+
+.salonImage a img {
+  width: 20rem;
+  height: 10rem;
+  border-radius: 5px;
+}

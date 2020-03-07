@@ -56,28 +56,23 @@ class SignupForm extends Component {
 
   render() {
     return (
-      <section className={styles.section}>
+      <section className={styles.sections}>
         {
           this.state.error && <p>{this.state.error}</p>
         }
 
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <fieldset>
-            <legend>Signup Form</legend>
-            <label htmlFor='name'>
-              Full Name
-            </label>
+            <legend style={{ fontWeight: '500', textAlign: 'center', textTransform: 'uppercase', borderBottom: '1px solid #000'  }}>Signup</legend>
             <input 
               id='name' 
               name='name' 
               type='text' 
               value={this.state.name}
               onChange={this.handleChange}
-            
             />
-            <label 
-            htmlFor='email'>
-              Email
+            <label htmlFor='name'>
+              Full Name
             </label>
             <input 
               id='email' 
@@ -87,8 +82,8 @@ class SignupForm extends Component {
               onChange={this.handleChange} 
             />
             <label 
-            htmlFor='password'>
-              Password
+            htmlFor='email'>
+              Email
             </label>
             <input 
               id='password' 
@@ -98,8 +93,8 @@ class SignupForm extends Component {
               onChange={this.handleChange}
             />
             <label 
-            htmlFor='passwordConfirmation'>
-              Password Confirmation
+            htmlFor='password'>
+              Password
             </label>
             <input 
               id='passwordConfirmation' 
@@ -108,6 +103,10 @@ class SignupForm extends Component {
               value={this.state.passwordConfirmation}
               onChange={this.handleChange} 
             />
+            <label 
+            htmlFor='passwordConfirmation'>
+              Password Confirmation
+            </label>
             <button 
             type='submit' disabled={!this.isFormValid()}
             >Submit</button>

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import trimerService from '../../Services/trimerService'
-import StarRatings from 'react-star-ratings'
+// import StarRatings from 'react-star-ratings'
 import barbershop from '../../Images/barbershop.png'
 import spa from '../../Images/spa.jpg'
 import salon from '../../Images/salon.jpg'
 import trimerVideo from '../../assets/trimer-video.mp4'
 import styles from './Homepage.module.css'
+import ReviewsPage from '../ReviewsPage/ReviewsPage';
 
 class Homepage extends Component {
 
@@ -39,6 +40,34 @@ class Homepage extends Component {
       <div className={styles.videoScreen}>
       </div>
       <video src={trimerVideo} autoPlay/>
+      <div className={styles.services}>
+        <h1 style={{textAlign:'center'}}>
+          Services Available
+        </h1>
+        <div className={styles.servicesContainer}>
+        <div>
+        <Link to='/schedule'>
+            <img src="https://img.icons8.com/office/48/000000/overtime.png" alt='schedule' />
+        </Link>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tempora vel excepturi illo sequi, iure harum deserunt nam porro, minus nemo totam nesciunt id quos perspiciatis est, aspernatur ab aperiam.</p>
+        </div>
+        <div>
+        <Link to='/barbershop'>
+          <img src="https://img.icons8.com/color/48/000000/scissors.png" alt='scissors' />
+        </Link>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tempora vel excepturi illo sequi, iure harum deserunt nam porro, minus nemo totam nesciunt id quos perspiciatis est, aspernatur ab aperiam.</p>
+        </div>
+        <div>
+        <Link to='/salon-spa'>
+          <img src="https://img.icons8.com/color/48/000000/hair-dryer.png" alt='hair-dryer' />
+        </Link>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum tempora vel excepturi illo sequi, iure harum deserunt nam porro, minus nemo totam nesciunt id quos perspiciatis est, aspernatur ab aperiam.</p>
+        </div>
+        {/* <div>
+          <i className='material-icons'>schedule</i>
+        </div> */}
+      </div>
+      </div>
       <div className={styles.mainContent}>
         <h1 style={{textAlign:'center'}}>
           Featured Salons
@@ -78,22 +107,19 @@ class Homepage extends Component {
               {console.log(d.addedBy)}           */}
               <Link to={`salon/${d._id}/review`}><button className='btn btn-primary'>Add review</button></Link>
               <div key={d._id} className={styles.reviewsContainer}>
-  
-                  {
-                  d.reviews.map( ({ rating }) => 
-                  <StarRatings
-                  key={rating}
-                  starDimension="1rem"
-                  starSpacing=".01rem"
-                  starRatedColor={rating > 3 ? 'green' : 'red'}
-                  rating={rating} 
-                  />
-                  )}
+
+                    <ReviewsPage
+                    review={d.reviews}
+                    />
+
                   </div>
                 </div>
                 )}
           </div>
         </div>
+      </div>
+      <div className='row' style={{ display: 'flex', justifyContent: 'center'}}>
+          <Link to='/salon'><button className='btn btn-outline-primary' style={{ height: '5rem', width: '70vw', marginTop: '2rem', marginBottom: '5rem', fontSize: '20px'}}>View All Salons</button></Link>
       </div>
     </div>
     );

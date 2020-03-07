@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import trimerService from '../../Services/trimerService'
-import styles from './ReviewForm.module.css'
+import styles from './ReviewEditForm.module.css'
 
-class ReviewForm extends Component {
+class ReviewEditForm extends Component {
 
   state = this.getInitialState()
 
@@ -101,4 +101,4 @@ class ReviewForm extends Component {
   }
 }
  
-export default ReviewForm;
+export default ReviewEditForm;

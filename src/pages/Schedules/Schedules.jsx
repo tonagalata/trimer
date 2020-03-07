@@ -26,6 +26,7 @@ class Schedules extends Component {
 
   checkTimeOfDay = () => {
     let date = this.state.date
+    console.log(date)
     let hours = date.getHours();
     if(hours <= 12){
       return hours
@@ -53,7 +54,9 @@ class Schedules extends Component {
               onChange={this.onScheduleChange}
               value={this.state.date}
               />
+              
               {console.log(this.props)}
+              {console.log(this.state)}
           </div>
           <div className={styles.scheduleContent}>
             <div className={styles.scheduleTitles}>

@@ -1,7 +1,7 @@
 .section fieldset{
   display: flex;
   flex-direction: column;
-  width: 15rem;
+  width: 20rem;
   margin: 0 auto;
 }
 

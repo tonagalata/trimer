@@ -21,7 +21,6 @@ class AdminSignupForm extends Component {
     return (
       this.state.name && 
       this.state.email && 
-      this.state.isAdmin &&
       this.state.password &&
       this.state.password === this.state.passwordConfirmation
     );
@@ -61,28 +60,23 @@ class AdminSignupForm extends Component {
 
   render() {
     return (
-      <section className={styles.section}>
+      <main className={styles.sections}>
         {
           this.state.error && <p>{this.state.error}</p>
         }
 
         <form onSubmit={this.handleSubmit} className={styles.form}>
           <fieldset>
-            <legend>Signup Form</legend>
-            <label htmlFor='name'>
-              Full Name
-            </label>
+            <legend style={{ fontWeight: '500', textTransform: 'uppercase', borderBottom: '1px solid #000' }}>Signup Your Business</legend>
             <input 
               id='name' 
               name='name' 
               type='text' 
               value={this.state.name}
               onChange={this.handleChange}
-            
-            />
-            <label 
-            htmlFor='email'>
-              Email
+            />            
+            <label htmlFor='name'>
+              Full Name
             </label>
             <input 
               id='email' 
@@ -92,8 +86,8 @@ class AdminSignupForm extends Component {
               onChange={this.handleChange} 
             />
             <label 
-            htmlFor='password'>
-              Password
+            htmlFor='email'>
+              Email
             </label>
             <input 
               id='password' 
@@ -103,8 +97,8 @@ class AdminSignupForm extends Component {
               onChange={this.handleChange}
             />
             <label 
-            htmlFor='passwordConfirmation'>
-              Password Confirmation
+            htmlFor='password'>
+              Password
             </label>
             <input 
               id='passwordConfirmation' 
@@ -114,23 +108,38 @@ class AdminSignupForm extends Component {
               onChange={this.handleChange} 
             />
             <label 
-            htmlFor='businessAdmin'>
-              Are You Representing A Business?
+            htmlFor='passwordConfirmation'>
+              Password Confirmation
             </label>
-            <input
+            <p className='left'>
+              <label style={{float: 'left', marginBottom: '2rem', marginTop: '2rem'}}>
+                <input 
+                  required
+                  disabled={!this.isFormValid()} 
+                  id='businessAdmin' 
+                  name='isAdmin' 
+                  type='checkbox' 
+                  value={this.state.isAdmin}
+                  onChange={this.handleChange}
+                />
+                <span>Business Owner/Representative?</span>
+              </label>
+            </p>
+            {/* <input
+              className='browser-default'
               required 
               id='businessAdmin' 
               name='isAdmin' 
               type='checkbox' 
               value={this.state.isAdmin}
               onChange={this.handleChange} 
-            />
+            /> */}
             <button 
             type='submit' disabled={!this.isFormValid()}
             >Submit</button>
           </fieldset>
         </form>
-      </section>
+      </main>
     )
   }
 }
