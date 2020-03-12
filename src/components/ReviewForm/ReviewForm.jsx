@@ -50,6 +50,7 @@ class ReviewForm extends Component {
   render() {
     return (
       <main className={styles.container}>
+               {console.log(this.props.history)}
         <form onSubmit={this.handleSubmit}>
           <label htmlFor="rating">Rating</label>
           <select

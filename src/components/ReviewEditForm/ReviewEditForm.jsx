@@ -8,8 +8,9 @@ class ReviewEditForm extends Component {
   getInitialState() {
     return {
       rating: "",
-      content: "",
-      addedBy: this.props.user._id
+      content: '',
+      addedBy: this.props.user._id,
+      review: []
     };
   }
 
@@ -23,14 +24,27 @@ class ReviewEditForm extends Component {
     });
   };
 
-  handleSubmit = async e => {
+  handelEdit = () => {
+    console.log(this.props.salon)
+  //   trimerService.getReviews(this.props.match.params.id, this.props.match.params.idx)
+  //   .then( data => {
+  //     console.log(data)
+  //   this.setState({
+  //     review: data
+  //   })
+  // })
+  }
+
+  handleSubmit = async (e) => {
     e.preventDefault();
+    this.handelEdit();
     if (!this.isFormValid()) return;
     try {
       const { rating, content, addedBy } = this.state;
-      await trimerService.createReview(
+      await trimerService.getReviews(
         { rating, content, addedBy },
-        this.props.match.params.id
+        this.props.match.params.id,
+        this.props.match.params.idx,
       );
       this.setState(this.getInitialState(), () => {
         // add the token to state
@@ -45,7 +59,7 @@ class ReviewEditForm extends Component {
         error: error.message
       });
     }
-  };
+  }
 
   render() {
     return (
@@ -56,11 +70,11 @@ class ReviewEditForm extends Component {
             className="browser-default"
             id="rating"
             name="rating"
-            value={this.state.rating}
+            defaultValue={this.state.rating}
             onChange={this.handleChange}
           >
             <option value="" disabled>
-              Select Rating...
+              Select Star Rating...
             </option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -73,7 +87,7 @@ class ReviewEditForm extends Component {
             id="content"
             name="content"
             type="text"
-            value={this.state.content}
+            defaultValue={this.state.content}
             onChange={this.handleChange}
           />
           <input

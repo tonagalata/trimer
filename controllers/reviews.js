@@ -30,12 +30,12 @@ async function create(req, res) {
   }
 }
 
-async function deleteOneReview(req, res) {
+async function deleteOneReview(req, res, next) {
   try {
     const salon = await Salon.findById(req.params.id);
     const reviews = await salon.reviews.splice(req.params.idx, 1)
     salon.save({})
-    res.json(reviews);
+    res.json(reviews)
   } catch (error) {
     console.log(error)
      res.status(400).json(error);
@@ -46,8 +46,9 @@ async function UpdateOneReview(req, res) {
   try {
     const salon = await Salon.findById(req.params.id);
     const reviews = await salon.reviews.splice(req.params.idx, 1, req.body)
+
     salon.save({})
-    res.json(reviews);
+    res.json({reviews});
   } catch (error) {
     console.log(error)
      res.status(400).json(error);

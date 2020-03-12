@@ -6,6 +6,7 @@ import spa from '../../Images/spa.jpg'
 import salon from '../../Images/salon.jpg'
 import styles from './ViewSalon.module.css'
 import { Link } from 'react-router-dom';
+import StylistPage from '../StylistPage/StylistPage';
 
 class ViewSalon extends Component {
 
@@ -20,43 +21,39 @@ class ViewSalon extends Component {
     }
   }
 
+    handleState = async () => {
+      try {
+        const data = await trimerService.index()
+          this.setState({
+           salon: data,
+         })
+      } catch (error) {
+        console.log(error)
+      }
+    }
   
   componentDidMount = async () => {
-    try {
-      const data = await trimerService.index()
-        this.setState({
-         salon: data
-       })
-    } catch (error) {
-      console.log(error)
-    }
+    await this.handleState()
    }
 
-   componentDidCatch = async () => {
-    try {
-      const data = await trimerService.index()
-      // const data2 = await trimerService.getStylist(this.props.match.params.id)
-        this.setState({
-         salon: data,
-        //  stylist: data2
-       })
-    } catch (error) {
-      console.log(error)
-    }
-   }
+   handleDelete = async (review, siteIdx) => {
+    await trimerService.deleteReview(review, siteIdx)
+    // this.handleState()
+  }
 
 
   render() { 
     return ( 
       <section className='container'>
 
-      {/* {console.log(this.state.salon)} */}
+      {/* {console.log(this.)} */}
       {
         this.state.salon.length > 0 ?
         <div>
           {
           this.state.salon.map((d, idx)=> 
             <>
+            {console.log(d.stylist)}
               {
               d._id === this.props.match.params.id 
               ? 
@@ -107,6 +104,9 @@ class ViewSalon extends Component {
                   > 
                   <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '10rem' }}>
                     <div style={{ flexWrap: 'wrap' }}>
+                    { this.props.user !== null &&
+                      <Link to={`/salon/${d._id}/review/${r._id}`}>Edit review</Link>
+                    }
                     {r.content}
                     </div>
                       <StarRatings
@@ -118,7 +118,7 @@ class ViewSalon extends Component {
                       this.props.user !== null &&
                       r.addedBy === this.props.user._id
                       ?
-                      <button style={{ marginTop: '1rem' }} onClick={this.props.handleDelete.bind(this, idx, this.props.match.params.id)} className='btn btn-danger right'>
+                      <button style={{ marginTop: '1rem' }} onClick={this.handleDelete(idx, this.props.match.params.id)} className='btn btn-danger right'>
                         Delete
                       </button>
                       : ''
@@ -160,6 +160,7 @@ class ViewSalon extends Component {
         // )
       }
 
+      <StylistPage/>
          
       </section>
      );

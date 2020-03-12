@@ -15,7 +15,9 @@ import trimerService from "../../Services/trimerService";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import Barbershop from "../Barbershop/Barbershop";
 import SalonAndSpa from "../SalonAndSpa/SalonAndSpa";
+import StylistPage from "../StylistPage/StylistPage";
 import "./App.css";
+import ReviewEditForm from "../../components/ReviewEditForm/ReviewEditForm";
 
 class App extends Component {
   state = {
@@ -33,9 +35,10 @@ class App extends Component {
     };
   }
 
-  componentDidMount = async () => {
+  componentDidMount = async (idx) => {
     try {
-      const data = await trimerService.index();
+      const data = await trimerService.index()
+      // const data2 = await trimerService.getStylist(idx)
       this.setState({
         salon: data
       });
@@ -51,9 +54,9 @@ class App extends Component {
     this.setState({ user: null });
   };
 
-  handleDelete = (review, siteIdx) => {
-    trimerService.deleteReview(review, siteIdx);
-  };
+  // handleStylist = (sideIdx, idx) => {
+    // trimerService.getStylist(id)
+  // }
 
   render() {
     return (
@@ -73,7 +76,7 @@ class App extends Component {
                 render={props => (
                   <ViewSalon
                     user={this.state.user}
-                    handleDelete={this.handleDelete}
+                    handleStylist={this.state.stylist}
                     {...props}
                   />
                 )}
@@ -115,6 +118,20 @@ class App extends Component {
               />
               <Route
                 exact
+                path="/salon/:id/review/:idx"
+                render={props =>
+                  userService.getUser() ? (
+                    <ReviewEditForm 
+                    salon={this.state.salon}
+                    {...props} 
+                    user={this.state.user} />
+                  ) : (
+                    <Redirect to="/login" />
+                  )
+                }
+              />
+              <Route
+                exact
                 path="/salon/:id/review"
                 render={props =>
                   userService.getUser() ? (
@@ -122,6 +139,16 @@ class App extends Component {
                   ) : (
                     <Redirect to="/login" />
                   )
+                }
+              />
+              <Route
+                exact
+                path="/salon/stylist"
+                render={props =>
+                    <StylistPage 
+                    {...props} 
+                    user={this.state.user} 
+                    />
                 }
               />
               <Route

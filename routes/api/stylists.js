@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router();
 const stylistCtlr = require('../../controllers/stylists')
 
-router.post('/stylist', stylistCtlr.create)
-router.get('/:id/stylist', stylistCtlr.index)
+router.post('/stylist/:id', stylistCtlr.create)
+router.get('/stylist', stylistCtlr.index)
 // router.get('/featured', salonCtlr.getFeatured)
 
 // router.use(require('../../config/auth'))
