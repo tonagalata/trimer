@@ -14,7 +14,7 @@ Once logged in you can browse through our list of partners, add a review and rem
 
 ## Screenshots
 
-![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot1.png)
+![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot0.png)
 ![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot2.png)
 ![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot3.png)
 ![alt text](https://github.com/tonagalata/trimer/blob/master/src/Images/screenshots/screenshot4.png)
